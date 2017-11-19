@@ -18,7 +18,7 @@ def trepr(s):
 class Formatter(object):
     def __init__(self, imports=None):
         self.types = {}
-        self.htchar = ' '*4
+        self.htchar = ' ' * 4
         self.lfchar = '\n'
         self.indent = 0
         self.imports = imports
@@ -53,7 +53,7 @@ class Formatter(object):
             # Is a multiline string, so we use '''{}''' for the repr
             return trepr(value)
 
-        return repr(str(value))
+        return repr(value)
 
     def format_std_type(self, value, indent):
         return repr(value)
