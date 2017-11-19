@@ -1,5 +1,5 @@
 import six
-
+import datetime
 from .sorted_dict import SortedDict
 from .generic_repr import GenericRepr
 
@@ -45,6 +45,8 @@ class Formatter(object):
             return self.format_str(value, indent)
         elif isinstance(value, (int, float, complex, bool, bytes, set, frozenset, GenericRepr)):
             return self.format_std_type(value, indent)
+        elif isinstance(value, datetime.datetime):
+            return self.format_str(str(value), indent)
 
         return self.format_object(value, indent)
 
