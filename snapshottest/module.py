@@ -146,7 +146,11 @@ class SnapshotModule(object):
 
             imports = '\n'.join([
                 'from {} import {}'.format(module, ', '.join(module_imports))
-                for module, module_imports in self.imports.items()
+                for module, module_imports in self.imports.items() if module_imports
+            ])
+            imports += '\n' + '\n'.join([
+                'import {}'.format(module)
+                for module, module_imports in self.imports.items() if not module_imports
             ])
             snapshot_file.write('''# -*- coding: utf-8 -*-
 # snapshottest: v1 - https://goo.gl/zC4yUc
